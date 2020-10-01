@@ -124,13 +124,21 @@ class AppHomeScreen extends StatelessWidget {
                         children: [
                           Column(
                             children: [
-                              CircleAvatar(
-                                radius: 60.0,
-                                backgroundColor: Colors.white,
-                                child: Icon(
-                                  Icons.video_call,
-                                  color: kBlueAppColor,
-                                  size: 80.0,
+                              Container(
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle ,
+                                  boxShadow: [
+                                    BoxShadow(color: kGreyColor,spreadRadius: 9.0,blurRadius: 6.0,offset: Offset(0,3))
+                                  ]
+                                ),
+                                child: CircleAvatar(
+                                  radius: 60.0,
+                                  backgroundColor: Colors.white,
+                                  child: Icon(
+                                    Icons.video_call,
+                                    color: kBlueAppColor,
+                                    size: 80.0,
+                                  ),
                                 ),
                               ),
                               SizedBox(
@@ -144,13 +152,21 @@ class AppHomeScreen extends StatelessWidget {
                           ),
                           Column(
                             children: [
-                              CircleAvatar(
-                                radius: 60.0,
-                                backgroundColor: Colors.white,
-                                child: Icon(
-                                  Icons.calendar_today,
-                                  color: kBlueAppColor,
-                                  size: 80.0,
+                              Container(
+                                decoration: BoxDecoration(
+                                    shape: BoxShape.circle ,
+                                    boxShadow: [
+                                      BoxShadow(color: kGreyColor,spreadRadius: 9.0,blurRadius: 6.0,offset: Offset(0,3))
+                                    ]
+                                ),
+                                child: CircleAvatar(
+                                  radius: 60.0,
+                                  backgroundColor: Colors.white,
+                                  child: Icon(
+                                    Icons.calendar_today,
+                                    color: kBlueAppColor,
+                                    size: 80.0,
+                                  ),
                                 ),
                               ),
                               SizedBox(
@@ -172,16 +188,24 @@ class AppHomeScreen extends StatelessWidget {
                         children: [
                           Column(
                             children: [
-                              CircleAvatar(
-                                  radius: 60.0,
-                                  backgroundColor: Colors.white,
-                                  child: Text(
-                                    'SOS',
-                                    style: TextStyle(
-                                        color: Colors.red,
-                                        fontSize: 40.0,
-                                        fontWeight: FontWeight.bold),
-                                  )),
+                              Container(
+                                decoration: BoxDecoration(
+                                    shape: BoxShape.circle ,
+                                    boxShadow: [
+                                      BoxShadow(color: kGreyColor,spreadRadius: 9.0,blurRadius: 6.0,offset: Offset(0,3))
+                                    ]
+                                ),
+                                child: CircleAvatar(
+                                    radius: 60.0,
+                                    backgroundColor: Colors.white,
+                                    child: Text(
+                                      'SOS',
+                                      style: TextStyle(
+                                          color: Colors.red,
+                                          fontSize: 40.0,
+                                          fontWeight: FontWeight.bold),
+                                    )),
+                              ),
                               SizedBox(
                                 height: 5.0,
                               ),
@@ -196,13 +220,21 @@ class AppHomeScreen extends StatelessWidget {
                           ),
                           Column(
                             children: [
-                              CircleAvatar(
-                                radius: 60.0,
-                                backgroundColor: Colors.white,
-                                child: Icon(
-                                  Icons.graphic_eq,
-                                  color: kBlueAppColor,
-                                  size: 80.0,
+                              Container(
+                                decoration: BoxDecoration(
+                                    shape: BoxShape.circle ,
+                                    boxShadow: [
+                                      BoxShadow(color: kGreyColor,spreadRadius: 9.0,blurRadius: 6.0,offset: Offset(0,3))
+                                    ]
+                                ),
+                                child: CircleAvatar(
+                                  radius: 60.0,
+                                  backgroundColor: Colors.white,
+                                  child: Icon(
+                                    Icons.graphic_eq,
+                                    color: kBlueAppColor,
+                                    size: 80.0,
+                                  ),
                                 ),
                               ),
                               SizedBox(

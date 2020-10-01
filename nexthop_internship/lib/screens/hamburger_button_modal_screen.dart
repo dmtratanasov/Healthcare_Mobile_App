@@ -17,7 +17,7 @@ class HamburgerButtonModalScreen extends StatelessWidget {
           ),
         ),
         child: Padding(
-          padding: EdgeInsets.only(bottom: 20.0),
+          padding: EdgeInsets.only(bottom: 60.0),
           child: Column(
             children: [
               Container(
@@ -75,13 +75,13 @@ class HamburgerButtonModalScreen extends StatelessWidget {
                 child: Row(
                   children: [
                     Icon(
-                      Icons.history,
+                      Icons.settings,
                       color: kBlueAppColor,
                       size: 40.0,
                     ),
                     SizedBox(width: 15.0),
                     Text(
-                      'History Results',
+                      'Settings',
                       style: kBlueBoldTextStyle.copyWith(
                           color: Colors.black45, fontSize: 18.0),
                     ),
@@ -105,13 +105,13 @@ class HamburgerButtonModalScreen extends StatelessWidget {
                 child: Row(
                   children: [
                     Icon(
-                      Icons.history,
+                      Icons.star_border,
                       color: kBlueAppColor,
                       size: 40.0,
                     ),
                     SizedBox(width: 15.0),
                     Text(
-                      'History Results',
+                      'Membership',
                       style: kBlueBoldTextStyle.copyWith(
                           color: Colors.black45, fontSize: 18.0),
                     ),
@@ -135,13 +135,13 @@ class HamburgerButtonModalScreen extends StatelessWidget {
                 child: Row(
                   children: [
                     Icon(
-                      Icons.history,
+                      Icons.attach_money,
                       color: kBlueAppColor,
                       size: 40.0,
                     ),
                     SizedBox(width: 15.0),
                     Text(
-                      'History Results',
+                      'Transactions',
                       style: kBlueBoldTextStyle.copyWith(
                           color: Colors.black45, fontSize: 18.0),
                     ),
