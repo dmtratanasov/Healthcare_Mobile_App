@@ -20,6 +20,7 @@ class MyProfileScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 FlatButton(
+                  shape: CircleBorder(),
                   onPressed: () {
                     Navigator.pop(context);
                   },
