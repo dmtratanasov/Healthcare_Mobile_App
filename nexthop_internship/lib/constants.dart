@@ -12,5 +12,3 @@ TextStyle kCircleAvatarTextStyle = TextStyle(
     color: Colors.black45,
     fontWeight: FontWeight.w500
 );
-
-

@@ -2,8 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nexthop_internship/constants.dart';
 import 'package:nexthop_internship/screens/hamburger_button_modal_screen.dart';
+import 'package:nexthop_internship/screens/my_profile_screen.dart';
 
-class AppHomeScreen extends StatelessWidget {
+class AppHomeScreen extends StatelessWidget{
   static const String id = 'app_home_screen';
   final String userName = 'Damjan';
 
@@ -19,7 +20,7 @@ class AppHomeScreen extends StatelessWidget {
           backgroundColor: Colors.transparent,
           body: Padding(
             padding: EdgeInsets.only(
-                top: 25.0, left: 25.0, right: 25.0, bottom: 80.0),
+                top: 15.0, left: 25.0, right: 25.0, bottom: 80.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -28,16 +29,19 @@ class AppHomeScreen extends StatelessWidget {
                   children: [
                     Row(
                       children: [
-                        CircleAvatar(
-                            backgroundColor: Colors.white,
-                            radius: 32.0,
-                            child: Icon(
-                              Icons.person_outline,
-                              size: 60.0,
-                              color: kBlueAppColor,
-                            )),
-                        SizedBox(
-                          width: 30.0,
+                        FlatButton(
+                          onPressed: (){
+                            Navigator.pushNamed(context, MyProfileScreen.id);
+                          },
+                          shape: CircleBorder() ,
+                          child: CircleAvatar(
+                              backgroundColor: Colors.white,
+                              radius: 32.0,
+                              child: Icon(
+                                Icons.person_outline,
+                                size: 60.0,
+                                color: kBlueAppColor,
+                              )),
                         ),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -56,6 +60,7 @@ class AppHomeScreen extends StatelessWidget {
                       ],
                     ),
                     FlatButton(
+                      shape: CircleBorder(),
                       onPressed: () {
                         showModalBottomSheet(
                             context: context,
