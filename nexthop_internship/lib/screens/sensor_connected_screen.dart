@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:nexthop_internship/constants.dart';
 import 'package:nexthop_internship/screens/health_sensor_screen.dart';
 
-class DeviceConnectedScreen extends StatelessWidget {
-  static const String id = 'device_connected_screen';
+class SensorConnectedScreen extends StatelessWidget {
+  static const String id = 'sensor_connected_screen';
 
   @override
   Widget build(BuildContext context) {

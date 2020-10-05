@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nexthop_internship/screens/app_home_screen.dart';
-import 'package:nexthop_internship/screens/device_connected_screen.dart';
+import 'package:nexthop_internship/screens/sensor_connected_screen.dart';
 import 'package:nexthop_internship/screens/my_profile_screen.dart';
 import 'package:nexthop_internship/screens/sensor_connecting_screen.dart';
 import 'screens/health_sensor_screen.dart';
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         MyProfileScreen.id : (context) => MyProfileScreen(),
         HealthSensorScreen.id : (context) => HealthSensorScreen(),
         SensorConnectingScreen.id : (context) => SensorConnectingScreen(),
-        DeviceConnectedScreen.id : (context) => DeviceConnectedScreen(),
+        SensorConnectedScreen.id : (context) => SensorConnectedScreen(),
       },
       title: 'Flutter Demo',
     );
