@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:nexthop_internship/constants.dart';
 import 'package:nexthop_internship/screens/hamburger_button_modal_screen.dart';
 import 'package:nexthop_internship/screens/my_profile_screen.dart';
+import 'health_sensor_screen.dart';
 
 class AppHomeScreen extends StatelessWidget{
   static const String id = 'app_home_screen';
@@ -232,13 +233,19 @@ class AppHomeScreen extends StatelessWidget{
                                       BoxShadow(color: kGreyColor,spreadRadius: 9.0,blurRadius: 6.0,offset: Offset(0,3))
                                     ]
                                 ),
-                                child: CircleAvatar(
-                                  radius: 60.0,
-                                  backgroundColor: Colors.white,
-                                  child: Icon(
-                                    Icons.graphic_eq,
-                                    color: kBlueAppColor,
-                                    size: 80.0,
+                                child: FlatButton(
+                                  shape: CircleBorder(),
+                                  onPressed: () {
+                                    Navigator.pushNamed(context, HealthSensorScreen.id);
+                                  },
+                                  child: CircleAvatar(
+                                    radius: 60.0,
+                                    backgroundColor: Colors.white,
+                                    child: Icon(
+                                      Icons.graphic_eq,
+                                      color: kBlueAppColor,
+                                      size: 80.0,
+                                    ),
                                   ),
                                 ),
                               ),
