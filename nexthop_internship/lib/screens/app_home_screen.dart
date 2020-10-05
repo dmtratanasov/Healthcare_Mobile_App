@@ -124,7 +124,8 @@ class AppHomeScreen extends StatelessWidget{
                 ),
                 Column(
                   children: [
-                    Column(children: [
+                    Column(
+                        children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
@@ -189,77 +190,80 @@ class AppHomeScreen extends StatelessWidget{
                       SizedBox(
                         height: 10.0,
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Column(
-                            children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                    shape: BoxShape.circle ,
-                                    boxShadow: [
-                                      BoxShadow(color: kGreyColor,spreadRadius: 9.0,blurRadius: 6.0,offset: Offset(0,3))
-                                    ]
-                                ),
-                                child: CircleAvatar(
-                                    radius: 60.0,
-                                    backgroundColor: Colors.white,
-                                    child: Text(
-                                      'SOS',
-                                      style: TextStyle(
-                                          color: Colors.red,
-                                          fontSize: 40.0,
-                                          fontWeight: FontWeight.bold),
-                                    )),
-                              ),
-                              SizedBox(
-                                height: 5.0,
-                              ),
-                              Text(
-                                'Emergency \n SOS',
-                                style: TextStyle(
-                                    color: Colors.red,
-                                    fontWeight: FontWeight.bold),
-                                textAlign: TextAlign.center,
-                              )
-                            ],
-                          ),
-                          Column(
-                            children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                    shape: BoxShape.circle ,
-                                    boxShadow: [
-                                      BoxShadow(color: kGreyColor,spreadRadius: 9.0,blurRadius: 6.0,offset: Offset(0,3))
-                                    ]
-                                ),
-                                child: FlatButton(
-                                  shape: CircleBorder(),
-                                  onPressed: () {
-                                    Navigator.pushNamed(context, HealthSensorScreen.id);
-                                  },
+                      Padding(
+                        padding: EdgeInsets.only(left: 14.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Column(
+                              children: [
+                                Container(
+                                  decoration: BoxDecoration(
+                                      shape: BoxShape.circle ,
+                                      boxShadow: [
+                                        BoxShadow(color: kGreyColor,spreadRadius: 9.0,blurRadius: 6.0,offset: Offset(0,3))
+                                      ]
+                                  ),
                                   child: CircleAvatar(
-                                    radius: 60.0,
-                                    backgroundColor: Colors.white,
-                                    child: Icon(
-                                      Icons.graphic_eq,
-                                      color: kBlueAppColor,
-                                      size: 80.0,
+                                      radius: 60.0,
+                                      backgroundColor: Colors.white,
+                                      child: Text(
+                                        'SOS',
+                                        style: TextStyle(
+                                            color: Colors.red,
+                                            fontSize: 40.0,
+                                            fontWeight: FontWeight.bold),
+                                      )),
+                                ),
+                                SizedBox(
+                                  height: 5.0,
+                                ),
+                                Text(
+                                  'Emergency \n SOS',
+                                  style: TextStyle(
+                                      color: Colors.red,
+                                      fontWeight: FontWeight.bold),
+                                  textAlign: TextAlign.center,
+                                )
+                              ],
+                            ),
+                            Column(
+                              children: [
+                                Container(
+                                  decoration: BoxDecoration(
+                                      shape: BoxShape.circle ,
+                                      boxShadow: [
+                                        BoxShadow(color: kGreyColor,spreadRadius: 9.0,blurRadius: 6.0,offset: Offset(0,3))
+                                      ]
+                                  ),
+                                  child: FlatButton(
+                                    shape: CircleBorder(),
+                                    onPressed: () {
+                                      Navigator.pushNamed(context, HealthSensorScreen.id);
+                                    },
+                                    child: CircleAvatar(
+                                      radius: 60.0,
+                                      backgroundColor: Colors.white,
+                                      child: Icon(
+                                        Icons.graphic_eq,
+                                        color: kBlueAppColor,
+                                        size: 80.0,
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                              SizedBox(
-                                height: 5.0,
-                              ),
-                              Text(
-                                'Health \n sensor',
-                                style: kCircleAvatarTextStyle,
-                                textAlign: TextAlign.center,
-                              )
-                            ],
-                          )
-                        ],
+                                SizedBox(
+                                  height: 5.0,
+                                ),
+                                Text(
+                                  'Health \n sensor',
+                                  style: kCircleAvatarTextStyle,
+                                  textAlign: TextAlign.center,
+                                )
+                              ],
+                            )
+                          ],
+                        ),
                       ),
                     ]),
                     Row(),
