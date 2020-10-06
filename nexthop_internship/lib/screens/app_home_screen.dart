@@ -223,7 +223,7 @@ class AppHomeScreen extends StatelessWidget {
                                     print(position);
                                     final coordinates = new Coordinates(
                                         position.latitude, position.longitude);
-                                    var addresses = await Geocoder.local.findAddressesFromCoordinates(
+                                    List<Address> addresses = await Geocoder.local.findAddressesFromCoordinates(
                                         coordinates);
                                     Address first = addresses.first;
                                     print('$userName $userLastName needs medical assistance at ${first.locality}, ${first.adminArea},${first.subLocality}, ${first.subAdminArea},${first.addressLine}, ${first.featureName},${first.thoroughfare}, ${first.subThoroughfare}');
