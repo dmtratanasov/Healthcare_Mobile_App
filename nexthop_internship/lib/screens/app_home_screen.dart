@@ -4,10 +4,25 @@ import 'package:nexthop_internship/constants.dart';
 import 'package:nexthop_internship/screens/hamburger_button_modal_screen.dart';
 import 'package:nexthop_internship/screens/my_profile_screen.dart';
 import 'health_sensor_screen.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:geocoder/geocoder.dart';
 
-class AppHomeScreen extends StatelessWidget{
+class AppHomeScreen extends StatelessWidget {
   static const String id = 'app_home_screen';
   final String userName = 'Damjan';
+  final String userLastName = 'Damjanovski';
+
+
+  getUserLocation() async {
+    Position position = await getCurrentPosition();
+    final coordinates = new Coordinates(
+        position.latitude, position.longitude);
+    var addresses = await Geocoder.local.findAddressesFromCoordinates(
+        coordinates);
+    var first = addresses.first;
+    print(' ${first.locality}, ${first.adminArea},${first.subLocality}, ${first.subAdminArea},${first.addressLine}, ${first.featureName},${first.thoroughfare}, ${first.subThoroughfare}');
+    return first;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,10 +46,10 @@ class AppHomeScreen extends StatelessWidget{
                     Row(
                       children: [
                         FlatButton(
-                          onPressed: (){
+                          onPressed: () {
                             Navigator.pushNamed(context, MyProfileScreen.id);
                           },
-                          shape: CircleBorder() ,
+                          shape: CircleBorder(),
                           child: CircleAvatar(
                               backgroundColor: Colors.white,
                               radius: 32.0,
@@ -124,8 +139,7 @@ class AppHomeScreen extends StatelessWidget{
                 ),
                 Column(
                   children: [
-                    Column(
-                        children: [
+                    Column(children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
@@ -133,11 +147,14 @@ class AppHomeScreen extends StatelessWidget{
                             children: [
                               Container(
                                 decoration: BoxDecoration(
-                                  shape: BoxShape.circle ,
-                                  boxShadow: [
-                                    BoxShadow(color: kGreyColor,spreadRadius: 9.0,blurRadius: 6.0,offset: Offset(0,3))
-                                  ]
-                                ),
+                                    shape: BoxShape.circle,
+                                    boxShadow: [
+                                      BoxShadow(
+                                          color: kGreyColor,
+                                          spreadRadius: 9.0,
+                                          blurRadius: 6.0,
+                                          offset: Offset(0, 3))
+                                    ]),
                                 child: CircleAvatar(
                                   radius: 60.0,
                                   backgroundColor: Colors.white,
@@ -161,11 +178,14 @@ class AppHomeScreen extends StatelessWidget{
                             children: [
                               Container(
                                 decoration: BoxDecoration(
-                                    shape: BoxShape.circle ,
+                                    shape: BoxShape.circle,
                                     boxShadow: [
-                                      BoxShadow(color: kGreyColor,spreadRadius: 9.0,blurRadius: 6.0,offset: Offset(0,3))
-                                    ]
-                                ),
+                                      BoxShadow(
+                                          color: kGreyColor,
+                                          spreadRadius: 9.0,
+                                          blurRadius: 6.0,
+                                          offset: Offset(0, 3))
+                                    ]),
                                 child: CircleAvatar(
                                   radius: 60.0,
                                   backgroundColor: Colors.white,
@@ -197,23 +217,38 @@ class AppHomeScreen extends StatelessWidget{
                           children: [
                             Column(
                               children: [
-                                Container(
-                                  decoration: BoxDecoration(
-                                      shape: BoxShape.circle ,
-                                      boxShadow: [
-                                        BoxShadow(color: kGreyColor,spreadRadius: 9.0,blurRadius: 6.0,offset: Offset(0,3))
-                                      ]
+                                FlatButton(
+                                  onPressed: () async{
+                                    Position position = await getCurrentPosition();
+                                    print(position);
+                                    final coordinates = new Coordinates(
+                                        position.latitude, position.longitude);
+                                    var addresses = await Geocoder.local.findAddressesFromCoordinates(
+                                        coordinates);
+                                    Address first = addresses.first;
+                                    print('$userName $userLastName needs medical assistance at ${first.locality}, ${first.adminArea},${first.subLocality}, ${first.subAdminArea},${first.addressLine}, ${first.featureName},${first.thoroughfare}, ${first.subThoroughfare}');
+                                  },
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        boxShadow: [
+                                          BoxShadow(
+                                              color: kGreyColor,
+                                              spreadRadius: 9.0,
+                                              blurRadius: 6.0,
+                                              offset: Offset(0, 3))
+                                        ]),
+                                    child: CircleAvatar(
+                                        radius: 60.0,
+                                        backgroundColor: Colors.white,
+                                        child: Text(
+                                          'SOS',
+                                          style: TextStyle(
+                                              color: Colors.red,
+                                              fontSize: 40.0,
+                                              fontWeight: FontWeight.bold),
+                                        )),
                                   ),
-                                  child: CircleAvatar(
-                                      radius: 60.0,
-                                      backgroundColor: Colors.white,
-                                      child: Text(
-                                        'SOS',
-                                        style: TextStyle(
-                                            color: Colors.red,
-                                            fontSize: 40.0,
-                                            fontWeight: FontWeight.bold),
-                                      )),
                                 ),
                                 SizedBox(
                                   height: 5.0,
@@ -231,15 +266,19 @@ class AppHomeScreen extends StatelessWidget{
                               children: [
                                 Container(
                                   decoration: BoxDecoration(
-                                      shape: BoxShape.circle ,
+                                      shape: BoxShape.circle,
                                       boxShadow: [
-                                        BoxShadow(color: kGreyColor,spreadRadius: 9.0,blurRadius: 6.0,offset: Offset(0,3))
-                                      ]
-                                  ),
+                                        BoxShadow(
+                                            color: kGreyColor,
+                                            spreadRadius: 9.0,
+                                            blurRadius: 6.0,
+                                            offset: Offset(0, 3))
+                                      ]),
                                   child: FlatButton(
                                     shape: CircleBorder(),
                                     onPressed: () {
-                                      Navigator.pushNamed(context, HealthSensorScreen.id);
+                                      Navigator.pushNamed(
+                                          context, HealthSensorScreen.id);
                                     },
                                     child: CircleAvatar(
                                       radius: 60.0,
