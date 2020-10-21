@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "785621219424",
+    "firebase_url": "https://next-hop-internship.firebaseio.com",
+    "project_id": "next-hop-internship",
+    "storage_bucket": "next-hop-internship.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:785621219424:android:f039cb6fe58341e05aab05",
+        "android_client_info": {
+          "package_name": "dimitarata.nexthop_internship"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "785621219424-2ime7e0f0mjjomls382jquq2vp0nvdpd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBxM2UcE51xzfAZD2H5CeNtghR4lhkF0k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "785621219424-2ime7e0f0mjjomls382jquq2vp0nvdpd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,27 +1,56 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nexthop_internship/constants.dart';
+import 'package:nexthop_internship/screens/app_first_screen.dart';
 import 'package:nexthop_internship/screens/hamburger_button_modal_screen.dart';
 import 'package:nexthop_internship/screens/my_profile_screen.dart';
 import 'health_sensor_screen.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoder/geocoder.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-class AppHomeScreen extends StatelessWidget {
+User loggedInUser;
+class AppHomeScreen extends StatefulWidget {
   static const String id = 'app_home_screen';
+
+  @override
+  _AppHomeScreenState createState() => _AppHomeScreenState();
+}
+
+class _AppHomeScreenState extends State<AppHomeScreen> {
   final String userName = 'Damjan';
+
   final String userLastName = 'Damjanovski';
 
+  final _auth = FirebaseAuth.instance;
 
   getUserLocation() async {
     Position position = await getCurrentPosition();
-    final coordinates = new Coordinates(
-        position.latitude, position.longitude);
-    var addresses = await Geocoder.local.findAddressesFromCoordinates(
-        coordinates);
+    final coordinates = new Coordinates(position.latitude, position.longitude);
+    var addresses =
+        await Geocoder.local.findAddressesFromCoordinates(coordinates);
     var first = addresses.first;
-    print(' ${first.locality}, ${first.adminArea},${first.subLocality}, ${first.subAdminArea},${first.addressLine}, ${first.featureName},${first.thoroughfare}, ${first.subThoroughfare}');
+    print(
+        ' ${first.locality}, ${first.adminArea},${first.subLocality}, ${first.subAdminArea},${first.addressLine}, ${first.featureName},${first.thoroughfare}, ${first.subThoroughfare}');
     return first;
+  }
+
+  void getCurrentUser() async {
+    try {
+      final user = await _auth.currentUser;
+      if (user != null) {
+        loggedInUser = user;
+        print('Signed In user email ${loggedInUser.email}');
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getCurrentUser();
   }
 
   @override
@@ -36,7 +65,7 @@ class AppHomeScreen extends StatelessWidget {
           backgroundColor: Colors.transparent,
           body: Padding(
             padding: EdgeInsets.only(
-                top: 15.0, left: 25.0, right: 25.0, bottom: 80.0),
+                top: 15.0, left: 25.0, right: 25.0, bottom: 40.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -218,15 +247,19 @@ class AppHomeScreen extends StatelessWidget {
                             Column(
                               children: [
                                 FlatButton(
-                                  onPressed: () async{
-                                    Position position = await getCurrentPosition();
+                                  onPressed: () async {
+                                    Position position =
+                                        await getCurrentPosition();
                                     print(position);
                                     final coordinates = new Coordinates(
                                         position.latitude, position.longitude);
-                                    List<Address> addresses = await Geocoder.local.findAddressesFromCoordinates(
-                                        coordinates);
+                                    List<Address> addresses = await Geocoder
+                                        .local
+                                        .findAddressesFromCoordinates(
+                                            coordinates);
                                     Address first = addresses.first;
-                                    print('$userName $userLastName needs medical assistance at ${first.locality}, ${first.adminArea},${first.subLocality}, ${first.subAdminArea},${first.addressLine}, ${first.featureName},${first.thoroughfare}, ${first.subThoroughfare}');
+                                    print(
+                                        '$userName $userLastName needs medical assistance at ${first.locality}, ${first.adminArea},${first.subLocality}, ${first.subAdminArea},${first.addressLine}, ${first.featureName},${first.thoroughfare}, ${first.subThoroughfare}');
                                   },
                                   child: Container(
                                     decoration: BoxDecoration(
@@ -305,7 +338,18 @@ class AppHomeScreen extends StatelessWidget {
                         ),
                       ),
                     ]),
-                    Row(),
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                      FlatButton(
+                        onPressed: (){
+                          _auth.signOut();
+                          Navigator.pushNamed(context, AppFirstScreen.id);
+                          print('User Signed Out');
+                        },
+                        child: Text('Sign Out'),
+                      ),
+                    ])
                   ],
                 )
               ],
