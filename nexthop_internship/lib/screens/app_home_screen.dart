@@ -37,11 +37,7 @@ class _AppHomeScreenState extends State<AppHomeScreen> {
 
   void getCurrentUser() async {
     try {
-      final user = await _auth.currentUser;
-      if (user != null) {
-        loggedInUser = user;
-        print('Signed In user email ${loggedInUser.email}');
-      }
+      loggedInUser =  _auth.currentUser;
     } catch (e) {
       print(e);
     }
@@ -96,7 +92,7 @@ class _AppHomeScreenState extends State<AppHomeScreen> {
                                     fontWeight: FontWeight.w400,
                                     fontSize: 15.0)),
                             Text(
-                              userName,
+                              loggedInUser.displayName,
                               style: kBlueBoldTextStyle.copyWith(
                                   fontWeight: FontWeight.bold, fontSize: 18.0),
                             )
