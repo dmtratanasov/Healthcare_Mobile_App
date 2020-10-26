@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nexthop_internship/constants.dart';
 import 'package:nexthop_internship/components/rounded_button.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:nexthop_internship/screens/app_first_screen.dart';
-import 'package:nexthop_internship/screens/app_home_screen.dart';
 
 class RegistrationScreen extends StatefulWidget {
   static const String id = 'registration_screen';
@@ -17,6 +15,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   bool showSpinner = false;
   String email;
   String password;
+  String displayName;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -68,6 +67,27 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   Padding(
                     padding: EdgeInsets.only(left: 5.0, top: 15.0, right: 15.0, bottom: 15.0),
                     child: Text(
+                      'Name',
+                      style: TextStyle(
+                          color: Colors.grey,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 20.0
+                      ),
+                    ),
+                  ),
+                  TextField(
+                    keyboardType: TextInputType.emailAddress,
+                    textAlign: TextAlign.center,
+                    onChanged: (value) {
+                      displayName = value;
+                    },
+                    decoration: kTextFieldDecoration.copyWith(
+                      hintText: 'Enter your name',
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: 5.0, top: 15.0, right: 15.0, bottom: 15.0),
+                    child: Text(
                       'Email',
                       style: TextStyle(
                           color: Colors.grey,
@@ -108,27 +128,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       hintText: 'Enter your password',
                     ),
                   ),
-                  // Padding(
-                  //   padding: EdgeInsets.only(left: 5.0, top: 15.0, right: 15.0, bottom: 15.0),
-                  //   child: Text(
-                  //     'Confirm password',
-                  //     style: TextStyle(
-                  //         color: Colors.grey,
-                  //         fontWeight: FontWeight.w600,
-                  //         fontSize: 20.0
-                  //     ),
-                  //   ),
-                  // ),
-                  // TextField(
-                  //   keyboardType: TextInputType.emailAddress,
-                  //   textAlign: TextAlign.center,
-                  //   onChanged: (value) {
-                  //     // email = value;
-                  //   },
-                  //   decoration: kTextFieldDecoration.copyWith(
-                  //     hintText: 'Confirm your password',
-                  //   ),
-                  // ),
                   Center(
                     child: Padding(
                       padding: EdgeInsets.only(top:50.0),
@@ -142,6 +141,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                           try{
                             final newUser = await _auth.createUserWithEmailAndPassword(
                                 email: email.toString().trim(), password: password);
+                            await _auth.currentUser.updateProfile(displayName: displayName);
                             if(newUser != null){
                               Navigator.pushNamed(context, AppFirstScreen.id);
                             }
