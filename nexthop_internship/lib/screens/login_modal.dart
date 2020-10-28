@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nexthop_internship/constants.dart';
 import 'package:nexthop_internship/screens/email_login_screen.dart';
+import 'package:flutter_auth_buttons/flutter_auth_buttons.dart';
 
 class LoginModal extends StatelessWidget {
   @override
@@ -29,145 +30,67 @@ class LoginModal extends StatelessWidget {
                   color: kBlueAppColor,
                 ),
               ),
-              SizedBox(height: 50.0,),
-              FlatButton(
-                onPressed: (){
-                  Navigator.pushNamed(context, EmailLoginScreen.id);
-                },
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(20.0),
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            offset: Offset(0, 3),
-                            blurRadius: 7.0,
-                            spreadRadius: 5.0),
-                      ]),
-                  padding: EdgeInsets.only(
-                      bottom: 5.0, right: 10.0, left: 15.0, top: 5.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Icon(
-                        Icons.mail_outline,
-                        color: kBlueAppColor,
-                        size: 40.0,
-                      ),
-                      SizedBox(width: 15.0),
-                      Text(
-                        'Email',
-                        style: kBlueBoldTextStyle.copyWith(
-                            color: Colors.black45, fontSize: 18.0),
-                      ),
-                    ],
-                  ),
-                ),
+              SizedBox(
+                height: 50.0,
               ),
-              SizedBox(height: 40.0),
-              FlatButton(
-                onPressed: (){},
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(20.0),
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            offset: Offset(0, 3),
-                            blurRadius: 7.0,
-                            spreadRadius: 5.0),
-                      ]),
-                  padding: EdgeInsets.only(
-                      bottom: 5.0, right: 10.0, left: 15.0, top: 5.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Icon(
-                        Icons.settings,
-                        color: kBlueAppColor,
-                        size: 40.0,
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  ButtonTheme(
+                    padding: EdgeInsets.zero,
+                    child: FlatButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, EmailLoginScreen.id);
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Color(0xFF1877F2),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.3),
+                              offset: Offset(0, 4),
+                              blurRadius: 7.0,
+                            ),
+                          ],
+                        ),
+                        padding: EdgeInsets.only(
+                            bottom: 5.0, right: 10.0, left: 15.0, top: 5.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Icon(
+                              Icons.mail_outline,
+                              color: Colors.white,
+                              size: 27.0,
+                            ),
+                            SizedBox(width: 15.0),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 6.0, right: 10.0),
+                              child: Text(
+                                'Email',
+                                style: kBlueBoldTextStyle.copyWith(
+                                    color: Colors.white, fontSize: 18.0),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                      SizedBox(width: 15.0),
-                      Text(
-                        'Facebook',
-                        style: kBlueBoldTextStyle.copyWith(
-                            color: Colors.black45, fontSize: 18.0),
-                      ),
-                    ],
+                    ),
                   ),
-                ),
-              ),
-              SizedBox(height: 40.0),
-              FlatButton(
-                onPressed: (){},
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(20.0),
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            offset: Offset(0, 3),
-                            blurRadius: 7.0,
-                            spreadRadius: 5.0),
-                      ]),
-                  padding: EdgeInsets.only(
-                      bottom: 5.0, right: 10.0, left: 15.0, top: 5.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Icon(
-                        Icons.star_border,
-                        color: kBlueAppColor,
-                        size: 40.0,
-                      ),
-                      SizedBox(width: 15.0),
-                      Text(
-                        'Google',
-                        style: kBlueBoldTextStyle.copyWith(
-                            color: Colors.black45, fontSize: 18.0),
-                      ),
-                    ],
+                  SizedBox(height: 20.0),
+                  FacebookSignInButton(
+                    onPressed: () {},
                   ),
-                ),
-              ),
-              SizedBox(height: 40.0),
-              FlatButton(
-                onPressed: (){},
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(20.0),
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            offset: Offset(0, 3),
-                            blurRadius: 7.0,
-                            spreadRadius: 5.0),
-                      ]),
-                  padding: EdgeInsets.only(
-                      bottom: 5.0, right: 10.0, left: 15.0, top: 5.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Icon(
-                        Icons.attach_money,
-                        color: kBlueAppColor,
-                        size: 40.0,
-                      ),
-                      SizedBox(width: 15.0),
-                      Text(
-                        'Apple',
-                        style: kBlueBoldTextStyle.copyWith(
-                            color: Colors.black45, fontSize: 18.0),
-                      ),
-                    ],
+                  SizedBox(height: 20.0),
+                  GoogleSignInButton(
+                    onPressed: () {},
                   ),
-                ),
+                  SizedBox(height: 20.0),
+                  AppleSignInButton(
+                    onPressed: () {},
+                  ),
+                ],
               ),
-
             ],
           ),
         ),

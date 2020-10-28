@@ -18,9 +18,6 @@ class AppHomeScreen extends StatefulWidget {
 }
 
 class _AppHomeScreenState extends State<AppHomeScreen> {
-  final String userName = 'Damjan';
-
-  final String userLastName = 'Damjanovski';
 
   final _auth = FirebaseAuth.instance;
 
@@ -255,7 +252,7 @@ class _AppHomeScreenState extends State<AppHomeScreen> {
                                             coordinates);
                                     Address first = addresses.first;
                                     print(
-                                        '$userName $userLastName needs medical assistance at ${first.locality}, ${first.adminArea},${first.subLocality}, ${first.subAdminArea},${first.addressLine}, ${first.featureName},${first.thoroughfare}, ${first.subThoroughfare}');
+                                        '${loggedInUser.displayName} needs medical assistance at ${first.locality}, ${first.adminArea},${first.subLocality}, ${first.subAdminArea},${first.addressLine}, ${first.featureName},${first.thoroughfare}, ${first.subThoroughfare}');
                                   },
                                   child: Container(
                                     decoration: BoxDecoration(
@@ -341,7 +338,7 @@ class _AppHomeScreenState extends State<AppHomeScreen> {
                         onPressed: (){
                           _auth.signOut();
                           Navigator.pushNamed(context, AppFirstScreen.id);
-                          print('User Signed Out');
+                          print('${loggedInUser.displayName} Signed Out');
                         },
                         child: Text('Sign Out'),
                       ),

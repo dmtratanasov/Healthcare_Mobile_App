@@ -3,6 +3,7 @@ import 'package:nexthop_internship/constants.dart';
 import 'package:nexthop_internship/components/rounded_button.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:nexthop_internship/screens/app_first_screen.dart';
+import 'package:modal_progress_hud/modal_progress_hud.dart';
 
 class RegistrationScreen extends StatefulWidget {
   static const String id = 'registration_screen';
@@ -26,139 +27,142 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 fit: BoxFit.cover)),
         child: Scaffold(
           backgroundColor: Colors.transparent,
-          body: Padding(
-            padding: EdgeInsets.only(
-                top: 30.0, left: 25.0, right: 25.0, bottom: 0.0),
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  ButtonTheme(
-                    padding: EdgeInsets.only(bottom:10.0),
-                    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap, //limits the touch area to the button area
-                    minWidth: 0,
-                    height: 0,
-                    child: FlatButton(
-                      onPressed: (){
-                        Navigator.pop(context);
-                      },
-                      child: CircleAvatar(
-                        radius: 20.0,
-                        backgroundColor: Colors.white,
-                        child: Icon(Icons.arrow_back_ios),
-                      ),
-                    ),
-                  ),
-                  Hero(
-                    tag:'HSS',
-                    child: Material(
-                      color: Colors.transparent,
-                      child: Center(
-                        child: Text(
-                          'HSS',
-                          style: TextStyle(
-                              fontSize: 90.0,
-                              fontWeight: FontWeight.bold,
-                              color: kBlueAppColor),
+          body: ModalProgressHUD(
+            inAsyncCall: showSpinner,
+            child: Padding(
+              padding: EdgeInsets.only(
+                  top: 30.0, left: 25.0, right: 25.0, bottom: 0.0),
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ButtonTheme(
+                      padding: EdgeInsets.only(bottom:10.0),
+                      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap, //limits the touch area to the button area
+                      minWidth: 0,
+                      height: 0,
+                      child: FlatButton(
+                        onPressed: (){
+                          Navigator.pop(context);
+                        },
+                        child: CircleAvatar(
+                          radius: 20.0,
+                          backgroundColor: Colors.white,
+                          child: Icon(Icons.arrow_back_ios),
                         ),
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(left: 5.0, top: 15.0, right: 15.0, bottom: 15.0),
-                    child: Text(
-                      'Name',
-                      style: TextStyle(
-                          color: Colors.grey,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 20.0
+                    Hero(
+                      tag:'HSS',
+                      child: Material(
+                        color: Colors.transparent,
+                        child: Center(
+                          child: Text(
+                            'HSS',
+                            style: TextStyle(
+                                fontSize: 90.0,
+                                fontWeight: FontWeight.bold,
+                                color: kBlueAppColor),
+                          ),
+                        ),
                       ),
                     ),
-                  ),
-                  TextField(
-                    keyboardType: TextInputType.emailAddress,
-                    textAlign: TextAlign.center,
-                    onChanged: (value) {
-                      displayName = value;
-                    },
-                    decoration: kTextFieldDecoration.copyWith(
-                      hintText: 'Enter your name',
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(left: 5.0, top: 15.0, right: 15.0, bottom: 15.0),
-                    child: Text(
-                      'Email',
-                      style: TextStyle(
-                          color: Colors.grey,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 20.0
+                    Padding(
+                      padding: EdgeInsets.only(left: 5.0, top: 15.0, right: 15.0, bottom: 15.0),
+                      child: Text(
+                        'Name',
+                        style: TextStyle(
+                            color: Colors.grey,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 20.0
+                        ),
                       ),
                     ),
-                  ),
-                  TextField(
-                    keyboardType: TextInputType.emailAddress,
-                    textAlign: TextAlign.center,
-                    onChanged: (value) {
-                      email = value;
-                    },
-                    decoration: kTextFieldDecoration.copyWith(
-                      hintText: 'Enter your email',
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(left: 5.0, top: 15.0, right: 15.0, bottom: 15.0),
-                    child: Text(
-                      'Password',
-                      style: TextStyle(
-                          color: Colors.grey,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 20.0
+                    TextField(
+                      keyboardType: TextInputType.emailAddress,
+                      textAlign: TextAlign.center,
+                      onChanged: (value) {
+                        displayName = value;
+                      },
+                      decoration: kTextFieldDecoration.copyWith(
+                        hintText: 'Enter your name',
                       ),
                     ),
-                  ),
-                  TextField(
-                    keyboardType: TextInputType.emailAddress,
-                    textAlign: TextAlign.center,
-                    obscureText: true,
-                    onChanged: (value) {
-                      password = value;
-                    },
-                    decoration: kTextFieldDecoration.copyWith(
-                      hintText: 'Enter your password',
+                    Padding(
+                      padding: EdgeInsets.only(left: 5.0, top: 15.0, right: 15.0, bottom: 15.0),
+                      child: Text(
+                        'Email',
+                        style: TextStyle(
+                            color: Colors.grey,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 20.0
+                        ),
+                      ),
                     ),
-                  ),
-                  Center(
-                    child: Padding(
-                      padding: EdgeInsets.only(top:50.0),
-                      child: RoundedButton(
-                        color: kBlueAppColor,
-                        title: 'Register',
-                        onPress: () async{
-                          setState(() {
-                            showSpinner = true;
-                          });
-                          try{
-                            final newUser = await _auth.createUserWithEmailAndPassword(
-                                email: email.toString().trim(), password: password);
-                            await _auth.currentUser.updateProfile(displayName: displayName);
-                            if(newUser != null){
-                              Navigator.pushNamed(context, AppFirstScreen.id);
-                            }
+                    TextField(
+                      keyboardType: TextInputType.emailAddress,
+                      textAlign: TextAlign.center,
+                      onChanged: (value) {
+                        email = value;
+                      },
+                      decoration: kTextFieldDecoration.copyWith(
+                        hintText: 'Enter your email',
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(left: 5.0, top: 15.0, right: 15.0, bottom: 15.0),
+                      child: Text(
+                        'Password',
+                        style: TextStyle(
+                            color: Colors.grey,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 20.0
+                        ),
+                      ),
+                    ),
+                    TextField(
+                      keyboardType: TextInputType.emailAddress,
+                      textAlign: TextAlign.center,
+                      obscureText: true,
+                      onChanged: (value) {
+                        password = value;
+                      },
+                      decoration: kTextFieldDecoration.copyWith(
+                        hintText: 'Enter your password',
+                      ),
+                    ),
+                    Center(
+                      child: Padding(
+                        padding: EdgeInsets.only(top:50.0),
+                        child: RoundedButton(
+                          color: kBlueAppColor,
+                          title: 'Register',
+                          onPress: () async{
                             setState(() {
-                              showSpinner = false;
+                              showSpinner = true;
                             });
-                          }
-                          catch(e){
-                            print(e);
-                          }
-                        },
+                            try{
+                              final newUser = await _auth.createUserWithEmailAndPassword(
+                                  email: email.toString().trim(), password: password);
+                              await _auth.currentUser.updateProfile(displayName: displayName);
+                              if(newUser != null){
+                                Navigator.pushNamed(context, AppFirstScreen.id);
+                              }
+                              setState(() {
+                                showSpinner = false;
+                              });
+                            }
+                            catch(e){
+                              print(e);
+                            }
+                          },
+                        ),
                       ),
-                    ),
-                  )
-                ],
-              ),
-            )
+                    )
+                  ],
+                ),
+              )
+            ),
           ),
         ),
       ),
