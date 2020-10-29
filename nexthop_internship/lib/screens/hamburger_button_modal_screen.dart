@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nexthop_internship/constants.dart';
+import '../components/hamburger_modal_tile.dart';
 
 class HamburgerButtonModalScreen extends StatelessWidget {
   @override
@@ -29,126 +30,41 @@ class HamburgerButtonModalScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 50.0,),
-              Container(
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(20.0),
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          offset: Offset(0, 3),
-                          blurRadius: 7.0,
-                          spreadRadius: 5.0),
-                    ]),
-                padding: EdgeInsets.only(
-                    bottom: 5.0, right: 10.0, left: 15.0, top: 5.0),
-                child: Row(
-                  children: [
-                    Icon(
-                      Icons.history,
-                      color: kBlueAppColor,
-                      size: 40.0,
-                    ),
-                    SizedBox(width: 15.0),
-                    Text(
-                      'History Results',
-                      style: kBlueBoldTextStyle.copyWith(
-                          color: Colors.black45, fontSize: 18.0),
-                    ),
-                  ],
+              HamburgerModalTile(
+                text: 'History Results',
+                icon: Icon(
+                  Icons.history,
+                  color: kBlueAppColor,
+                  size: 40.0,
                 ),
               ),
               SizedBox(height: 40.0),
-              Container(
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(20.0),
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          offset: Offset(0, 3),
-                          blurRadius: 7.0,
-                          spreadRadius: 5.0),
-                    ]),
-                padding: EdgeInsets.only(
-                    bottom: 5.0, right: 10.0, left: 15.0, top: 5.0),
-                child: Row(
-                  children: [
-                    Icon(
-                      Icons.settings,
-                      color: kBlueAppColor,
-                      size: 40.0,
-                    ),
-                    SizedBox(width: 15.0),
-                    Text(
-                      'Settings',
-                      style: kBlueBoldTextStyle.copyWith(
-                          color: Colors.black45, fontSize: 18.0),
-                    ),
-                  ],
+              HamburgerModalTile(
+                text: 'Settings',
+                icon: Icon(
+                  Icons.settings,
+                  color: kBlueAppColor,
+                  size: 40.0,
                 ),
               ),
               SizedBox(height: 40.0),
-              Container(
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(20.0),
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          offset: Offset(0, 3),
-                          blurRadius: 7.0,
-                          spreadRadius: 5.0),
-                    ]),
-                padding: EdgeInsets.only(
-                    bottom: 5.0, right: 10.0, left: 15.0, top: 5.0),
-                child: Row(
-                  children: [
-                    Icon(
-                      Icons.star_border,
-                      color: kBlueAppColor,
-                      size: 40.0,
-                    ),
-                    SizedBox(width: 15.0),
-                    Text(
-                      'Membership',
-                      style: kBlueBoldTextStyle.copyWith(
-                          color: Colors.black45, fontSize: 18.0),
-                    ),
-                  ],
+              HamburgerModalTile(
+                text: 'Membership',
+                icon: Icon(
+                  Icons.star_border,
+                  color: kBlueAppColor,
+                  size: 40.0,
                 ),
               ),
               SizedBox(height: 40.0),
-              Container(
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(20.0),
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          offset: Offset(0, 3),
-                          blurRadius: 7.0,
-                          spreadRadius: 5.0),
-                    ]),
-                padding: EdgeInsets.only(
-                    bottom: 5.0, right: 10.0, left: 15.0, top: 5.0),
-                child: Row(
-                  children: [
-                    Icon(
-                      Icons.attach_money,
-                      color: kBlueAppColor,
-                      size: 40.0,
-                    ),
-                    SizedBox(width: 15.0),
-                    Text(
-                      'Transactions',
-                      style: kBlueBoldTextStyle.copyWith(
-                          color: Colors.black45, fontSize: 18.0),
-                    ),
-                  ],
+              HamburgerModalTile(
+                text: 'Transactions',
+                icon: Icon(
+                  Icons.attach_money,
+                  color: kBlueAppColor,
+                  size: 40.0,
                 ),
               ),
-
             ],
           ),
         ),

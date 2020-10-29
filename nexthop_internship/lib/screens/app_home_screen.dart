@@ -8,8 +8,10 @@ import 'health_sensor_screen.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoder/geocoder.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import '../components/homescreen_circle_button.dart';
 
 User loggedInUser;
+
 class AppHomeScreen extends StatefulWidget {
   static const String id = 'app_home_screen';
 
@@ -18,7 +20,6 @@ class AppHomeScreen extends StatefulWidget {
 }
 
 class _AppHomeScreenState extends State<AppHomeScreen> {
-
   final _auth = FirebaseAuth.instance;
 
   getUserLocation() async {
@@ -34,7 +35,7 @@ class _AppHomeScreenState extends State<AppHomeScreen> {
 
   void getCurrentUser() async {
     try {
-      loggedInUser =  _auth.currentUser;
+      loggedInUser = _auth.currentUser;
     } catch (e) {
       print(e);
     }
@@ -165,68 +166,24 @@ class _AppHomeScreenState extends State<AppHomeScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Column(
-                            children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    boxShadow: [
-                                      BoxShadow(
-                                          color: kGreyColor,
-                                          spreadRadius: 9.0,
-                                          blurRadius: 6.0,
-                                          offset: Offset(0, 3))
-                                    ]),
-                                child: CircleAvatar(
-                                  radius: 60.0,
-                                  backgroundColor: Colors.white,
-                                  child: Icon(
-                                    Icons.video_call,
-                                    color: kBlueAppColor,
-                                    size: 80.0,
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                height: 5.0,
-                              ),
-                              Text(
-                                'Video',
-                                style: kCircleAvatarTextStyle,
-                              )
-                            ],
+                          HomeScreenCircleButton(
+                            icon: Icon(
+                              Icons.video_call,
+                              color: kBlueAppColor,
+                              size: 80.0,
+                            ),
+                            text: 'Video',
+                            onPressed: (){},
                           ),
-                          Column(
-                            children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    boxShadow: [
-                                      BoxShadow(
-                                          color: kGreyColor,
-                                          spreadRadius: 9.0,
-                                          blurRadius: 6.0,
-                                          offset: Offset(0, 3))
-                                    ]),
-                                child: CircleAvatar(
-                                  radius: 60.0,
-                                  backgroundColor: Colors.white,
-                                  child: Icon(
-                                    Icons.calendar_today,
-                                    color: kBlueAppColor,
-                                    size: 80.0,
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                height: 5.0,
-                              ),
-                              Text(
-                                'Booking',
-                                style: kCircleAvatarTextStyle,
-                              )
-                            ],
-                          )
+                          HomeScreenCircleButton(
+                            icon: Icon(
+                              Icons.calendar_today,
+                              color: kBlueAppColor,
+                              size: 80.0,
+                            ),
+                            text: 'Booking',
+                            onPressed: (){},
+                          ),
                         ],
                       ),
                       SizedBox(
@@ -288,54 +245,25 @@ class _AppHomeScreenState extends State<AppHomeScreen> {
                                 )
                               ],
                             ),
-                            Column(
-                              children: [
-                                Container(
-                                  decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      boxShadow: [
-                                        BoxShadow(
-                                            color: kGreyColor,
-                                            spreadRadius: 9.0,
-                                            blurRadius: 6.0,
-                                            offset: Offset(0, 3))
-                                      ]),
-                                  child: FlatButton(
-                                    shape: CircleBorder(),
-                                    onPressed: () {
-                                      Navigator.pushNamed(
-                                          context, HealthSensorScreen.id);
-                                    },
-                                    child: CircleAvatar(
-                                      radius: 60.0,
-                                      backgroundColor: Colors.white,
-                                      child: Icon(
-                                        Icons.graphic_eq,
-                                        color: kBlueAppColor,
-                                        size: 80.0,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 5.0,
-                                ),
-                                Text(
-                                  'Health \n sensor',
-                                  style: kCircleAvatarTextStyle,
-                                  textAlign: TextAlign.center,
-                                )
-                              ],
-                            )
+                            HomeScreenCircleButton(
+                              icon: Icon(
+                                Icons.graphic_eq,
+                                color: kBlueAppColor,
+                                size: 80.0,
+                              ),
+                              text: 'Health \n sensor',
+                              onPressed: () {
+                                Navigator.pushNamed(
+                                    context, HealthSensorScreen.id);
+                              },
+                            ),
                           ],
                         ),
                       ),
                     ]),
-                    Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
+                    Row(mainAxisAlignment: MainAxisAlignment.end, children: [
                       FlatButton(
-                        onPressed: (){
+                        onPressed: () {
                           _auth.signOut();
                           Navigator.pushNamed(context, AppFirstScreen.id);
                           print('${loggedInUser.displayName} Signed Out');
